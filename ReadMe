@@ -1,0 +1,41 @@
+## Requirements
+
+- **Node.js:** `v18.20.5`
+- **npm:** comes with Node.js
+
+You can verify your Node.js version by running:
+
+```bash
+node -v
+```
+
+Expected output:
+
+```text
+v18.20.5
+```
+
+---
+
+## Installation
+
+1. Clone this repository
+2. Open the terminal and navigate to the project directory
+3. Checkout to the `main` brunch
+4. Install the dependencies using npm: `npm ci` or `npm install` or `npm i`
+
+## Running the App
+
+After successfully installing the dependencies, you can run the app. Use the following command:
+`npm start`
+This command will start the development server. You can open the app in your browser at http://localhost:3000.
+
+## Development
+
+All project files are located in the src directory. You can edit these files to modify the behavior of the app.
+
+## Building
+
+If you're ready to deploy your app for production use, run the following command:
+`npm run build`
+This command will build the project and create an optimized version of the app in the build directory. You can deploy this version to your server.
