@@ -11,9 +11,11 @@ export class Engine {
     this.initialized = true;
     const root = document.getElementById("pixi-container");
 
+    const resolution = Math.max(Math.min(window.devicePixelRatio, 1.8), 1);
+
     await this.app.init({
       background: "#ffffff",
-      resolution: Math.max(window.devicePixelRatio, 2),
+      resolution,
     });
 
     if (root) {
