@@ -1,17 +1,47 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
     <title>PixiJS - Template</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <div id="pixi-container"></div>
+      <div id="pixi-container"></div>
+
+      <div id="config-panel">
+        <h2 class="config-panel__title">Configuration</h2>
+
+        <div class="config-container">
+          <div class="config-container__field">
+            <label for="floors">Floors</label>
+            <input
+              id="floors"
+              name="floors"
+              type="number"
+              min="1"
+              placeholder="Enter floors count"
+            />
+          </div>
+
+          <div class="config-container__field">
+            <label for="elevator-capacity">Elevator Capacity</label>
+            <input
+              id="elevator-capacity"
+              name="elevatorCapacity"
+              type="number"
+              min="1"
+              placeholder="Enter capacity"
+            />
+          </div>
+
+          <button type="submit" class="config-container__submit">Apply</button>
+        </div>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
-</body>
+  </body>
 </html>
