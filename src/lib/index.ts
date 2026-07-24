@@ -5,3 +5,4 @@ export * from "./utils/createTween";
 export * from "./utils/optimizeNumValue";
 export * from "./utils/wait";
 export * from "./utils/getRandomExcept";
+export * from "./utils/random";
