@@ -12,6 +12,7 @@ export interface IElevatorState {
 const defaultGraphicsSettings = {
   color: 0x1aa7e8,
   width: 4,
+  alignment: 1,
 };
 export class Elevator extends BaseComponent {
   readonly passengers: Passenger[] = [];

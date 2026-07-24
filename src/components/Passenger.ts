@@ -8,11 +8,7 @@ interface IPassengerParams {
   targetFloor: number;
   direction: ElevatorDirection;
 }
-const defaultGraphicsSettings = {
-  width: 3,
-};
 
-const FONT_SIZE = 14;
 export class Passenger extends BaseComponent {
   public readonly speed = 0.4;
 
@@ -23,9 +19,10 @@ export class Passenger extends BaseComponent {
     const { width, height } = params.size;
     const color = params.direction === "DOWN" ? "green" : "blue";
 
+    const borderWidth = Math.floor(width * 0.1);
     this.graphics
       .rect(0, 0, width, height)
-      .stroke({ ...defaultGraphicsSettings, color, alignment: 1 });
+      .stroke({ width: borderWidth, color, alignment: 1 });
 
     this.graphics.cacheAsTexture(true);
 
@@ -35,7 +32,7 @@ export class Passenger extends BaseComponent {
       text: params.targetFloor + 1,
       anchor: { x: 0.5, y: 0.5 },
       style: {
-        fontSize: FONT_SIZE,
+        fontSize: width * 0.55,
       },
     });
 

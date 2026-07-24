@@ -50,12 +50,16 @@ export class Floor extends BaseComponent {
     this.graphics.position.set(0, size.height - this.graphics.height / 2);
     this.container.addChild(this.graphics);
 
+    const lvl = index + 1;
     const t = new Text({
-      text: index + 1,
-      anchor: { x: 0.5, y: 0.5 },
+      text: "level " + lvl,
+      anchor: { x: 0, y: 0.5 },
+      style: {
+        fontSize: size.height * 0.3,
+      },
     });
 
-    const x = size.width / 2;
+    const x = size.width * 0.96 - t.width;
     const y = size.height / 2;
     t.position.set(x, y);
     this.container.addChild(t);
