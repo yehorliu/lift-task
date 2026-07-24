@@ -6,9 +6,8 @@ export class BaseComponent {
 
   constructor() {}
 
-  destroy = () => {
-    this.graphics.destroy(true);
-    this.container.removeChildren();
-    this.container.destroy();
-  };
+  destroy() {
+    this.container.children.forEach((c) => c.destroy(true));
+    this.container.destroy(true);
+  }
 }

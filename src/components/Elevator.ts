@@ -1,7 +1,14 @@
-import { type ElevatorDirection } from "../lib";
+import { wait, type Direction, type ElevatorStatus } from "../lib";
 import { BaseComponent } from "./BaseComponent";
 import { type Passenger } from "./Passenger";
 
+export interface IElevatorState {
+  currentFloor: number;
+  targetFloor: number | null;
+  direction: Direction;
+  status: ElevatorStatus;
+  doorIsOpen: boolean;
+}
 const defaultGraphicsSettings = {
   color: 0x1aa7e8,
   width: 4,
@@ -9,15 +16,24 @@ const defaultGraphicsSettings = {
 export class Elevator extends BaseComponent {
   readonly passengers: Passenger[] = [];
 
-  private _currentFloor = 1;
-  direction: ElevatorDirection = "UP";
+  private exitX = 0;
+  state: IElevatorState = {
+    currentFloor: 0,
+    targetFloor: null,
+    direction: null,
+    status: "idle",
+    doorIsOpen: false,
+  };
 
   constructor(
     public readonly capacity = 1,
     size: { width: number; height: number },
+    public readonly gap: number,
   ) {
     super();
-    const { width, height } = size;
+    const width = size.width + defaultGraphicsSettings.width * 2;
+    const height = size.height;
+    this.exitX = width;
     this.graphics
       .moveTo(width, height * 0.2)
       .lineTo(width, 0)
@@ -31,9 +47,6 @@ export class Elevator extends BaseComponent {
 
     this.container.addChild(this.graphics);
   }
-  setCurrentFloor = (level: number) => {
-    this._currentFloor = level;
-  };
 
   isFull = () => this.passengers.length === this.capacity;
 
@@ -47,11 +60,24 @@ export class Elevator extends BaseComponent {
     if (index >= 0) this.passengers.splice(index, 1);
   };
 
-  setDirection = (direction: ElevatorDirection) => {
-    this.direction = direction;
+  getExitX = () => {
+    return this.exitX;
   };
 
-  get currentFloor() {
-    return this._currentFloor;
+  openDoor = async () => {
+    this.setState({ doorIsOpen: true });
+    await wait(100);
+  };
+  closeDoor = async () => {
+    this.setState({ doorIsOpen: false });
+    await wait(100);
+  };
+
+  setState = (newState: Partial<IElevatorState>) => {
+    Object.assign(this.state, newState);
+  };
+
+  get paddings() {
+    return defaultGraphicsSettings.width;
   }
 }

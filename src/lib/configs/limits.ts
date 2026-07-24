@@ -7,4 +7,8 @@ export const configurationLimits = {
     min: 2,
     max: 4,
   },
+  passengerSpawnTime: {
+    min: 4000,
+    max: 10000,
+  },
 };
